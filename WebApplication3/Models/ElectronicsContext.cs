@@ -17,13 +17,17 @@ namespace WebApplication3.Models
 
         public virtual DbSet<Product> Product { get; set; }
 
-  
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.Property(e => e.ProductDescription)
+                    .HasMaxLength(8000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ProductName)
                     .HasMaxLength(255)
                     .IsUnicode(false);
             });
