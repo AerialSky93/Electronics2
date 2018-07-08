@@ -1,0 +1,29 @@
+﻿<!--https://www.jerriepelser.com/blog/approaches-when-rendering-list-using-bootstrap-grid-system/-->
+@model IEnumerable<WebApplication3.Models.Product>
+@{
+    ViewData["Title"] = "Index";
+    int counter = 0;
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (counter != 0 && counter % 3 == 0)
+        {
+        @:</div>
+        @:<div class="row">
+        }
+
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="@item.ProductId" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+                <div class="caption">
+                    <h3 id="thumbnail-label">@item.ProductDescription</h3>
+                    <p>@item.ProductDescription</p>
+                </div>
+            </div>
+        </div>
+
+        counter++;
+    }
+</div>
