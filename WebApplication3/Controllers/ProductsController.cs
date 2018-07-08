@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using PagedList;
 using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
@@ -19,9 +20,12 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            return View(await _context.Product.ToListAsync());
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(_context.Product.ToPagedList(pageNumber, pageSize));
+
         }
 
         // GET: Products/Details/5
