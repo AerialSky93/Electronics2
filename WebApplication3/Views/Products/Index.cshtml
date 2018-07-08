@@ -1,12 +1,18 @@
 ﻿<!--https://www.jerriepelser.com/blog/approaches-when-rendering-list-using-bootstrap-grid-system/-->
-@model IEnumerable<WebApplication3.Models.Product>
+
+
+@model IPagedList<WebApplication3.Models.Product>
 @{
-    ViewData["Title"] = "Index";
+    ViewBag.Title = "Products";
     int counter = 0;
 }
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+<!-- import the included stylesheet for some (very basic) default styling -->
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <div class="row">
-    @foreach (var item in Model)
+    @foreach (var item in ViewBag.OnePageOfProducts)
     {
         if (counter != 0 && counter % 3 == 0)
         {
@@ -23,9 +29,11 @@
                     <!--<h3 id="thumbnail-label">@item.ProductName</h3>-->
                     <p>@item.ProductName</p>
                 </div>
-                </div>
             </div>
+        </div>
 
-            counter++;
-        }
-    </div>
+        counter++;
+    }
+</div>
+
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))

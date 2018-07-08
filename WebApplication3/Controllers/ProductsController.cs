@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PagedList;
 using WebApplication3.Models;
+using X.PagedList;
 
 namespace WebApplication3.Controllers
 {
@@ -24,7 +24,9 @@ namespace WebApplication3.Controllers
         {
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            return View(_context.Product.ToPagedList(pageNumber, pageSize));
+            var onePageOfProducts = _context.Product.ToPagedList(pageNumber, pageSize);
+            ViewBag.OnePageOfProducts = onePageOfProducts;
+            return View();
 
         }
 
