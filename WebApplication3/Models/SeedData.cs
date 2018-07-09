@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication3.Models;
 using X.PagedList;
 
+//https://dotnetthoughts.net/seed-database-in-aspnet-core/
 
 namespace WebApplication3.Models
 {
