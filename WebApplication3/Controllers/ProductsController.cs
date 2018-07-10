@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication3.Models;
 using X.PagedList;
+using WebApplication3.Repository;
 
 namespace WebApplication3.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ElectronicsContext _context;
 
-        public ProductsController(ElectronicsContext context)
+        public ElectronicsContext _context;
+        public IProductRepository<Product> productrepository;
+
+        public ProductsController(IProductRepository<Product> repo)
         {
-            _context = context;
+            productrepository =repo;
         }
 
         // GET: Products
@@ -24,22 +27,19 @@ namespace WebApplication3.Controllers
         {
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            var onePageOfProducts = _context.Product.ToPagedList(pageNumber, pageSize);
+            //var onePageOfProducts = _context.Product.ToPagedList(pageNumber, pageSize);
+
+            var onePageOfProducts = productrepository.GetAllProduct().ToPagedList(pageNumber, pageSize);
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
 
         }
 
         // GET: Products/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var product = await _context.Product
-                .FirstOrDefaultAsync(m => m.ProductId == id);
+            var product = productrepository.GetById(id);
             if (product == null)
             {
                 return NotFound();
@@ -48,111 +48,28 @@ namespace WebApplication3.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+  
+        //private bool ProductExists(int id)
+        //{
+        //    return _context.Product.Any(e => e.ProductId == id);
+        //}
 
-        // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductDescription")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(product);
-        }
 
-        // GET: Products/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var product = await _context.Product.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            return View(product);
-        }
 
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductDescription")] Product product)
-        {
-            if (id != product.ProductId)
-            {
-                return NotFound();
-            }
+        //// GET: Products/Details/5
+        //public async Task<IActionResult> AddToCart(int productid)
+        //{
+        //    shoppingcartrepository.AddItem(productid,1);
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductExists(product.ProductId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(product);
-        }
+        //// GET: ShoppingCart
+        //public async Task<IActionResult> ViewShoppingCart()
+        //{
+        //    return View(shoppingcartrepository.GetShoppingCart());
+        //}
 
-        // GET: Products/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var product = await _context.Product
-                .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
-        }
-
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var product = await _context.Product.FindAsync(id);
-            _context.Product.Remove(product);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProductExists(int id)
-        {
-            return _context.Product.Any(e => e.ProductId == id);
-        }
     }
 }
