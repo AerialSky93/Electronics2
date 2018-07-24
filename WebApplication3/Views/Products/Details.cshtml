@@ -21,5 +21,5 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a> |
     <a asp-action="Index">Back to List</a> |
-    @Html.ActionLink(linkText: "AddtoCart", controllerName: "Products", actionName: "AddtoCart", routeValues: new { productid = @Model.ProductId }))
+    @Html.ActionLink(linkText: "AddtoCart", controllerName: "ShoppingCart", actionName: "AddtoCart", routeValues: new { productid = @Model.ProductId }))
 </div>

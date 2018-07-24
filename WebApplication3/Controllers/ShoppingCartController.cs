@@ -1,58 +1,40 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.AspNetCore.Mvc.Rendering;
-//using Microsoft.EntityFrameworkCore;
-//using WebApplication3.Models;
-//using X.PagedList;
-//using WebApplication3.Repository;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using WebApplication3.Models;
+using WebApplication3.Repository;
 
-//namespace WebApplication3.Controllers
-//{
-//    public class ShoppingCartController : Controller
-//    {
-//        private readonly ElectronicsContext _context;
+namespace WebApplication3.Controllers
+{
 
-//        private ShoppingCartRepository shoppingcartrepository;
-//        public ShoppingCartController(ShoppingCartRepository repo)
-//        {
-//            shoppingcartrepository = repo;
-//        }
+    public class ShoppingCartController : Controller
+    {
+        private IProductRepository<Product> productrepository;
+        private IShoppingCartRepository shoppingcartrepository;
 
-//        public RedirectToActionResult AddToCart(int productId, string returnUrl)
-//        {
 
-//            Product product = shoppingcartrepository.GetShoppingCart().FirstOrDefault(p => p.ProductID == productId);
-//            if (product != null)
-//            {
-//                ShoppingCart cart = GetCart();
-//                cart.AddItem(product, 1);
-//                SaveCart(cart);
-//            }
+        public ShoppingCartController(IProductRepository<Product> productrepo, IShoppingCartRepository shoppingcartrepo)
+        {
+            productrepository = productrepo;
+            shoppingcartrepository = shoppingcartrepo;
+        }
 
-//            return RedirectToAction("Index", new { returnUrl });
-//        }
-//        public RedirectToActionResult RemoveFromCart(int cartlineid, string returnUrl)
-//        {
-//            Product product = shoppingcartrepository.GetShoppingCart().FirstOrDefault(p => p.ProductID == productId);
-//            if (product != null)
-//            {
-//                ShoppingCart shoppingcart = GetNewCart();
-//                cart.RemoveItem(cartlineid);
-//                SaveCart(shoppingcart);
-//            }
-//            return RedirectToAction("Index", new { returnUrl });
-//        }
-//        private ShoppingCart GetNewCart()
-//        {
-//            ShoppingCart shoppingcart = HttpContext.Session.GetJson<Cart>("ShoppingCart") ?? new ShoppingCart();
-//            return cart;
-//        }
-//        private void SaveCart(ShoppingCart shoppingcart)
-//        {
-//            HttpContext.Session.SetJson("ShoppingCart", shoppingcart);
-//        }
-//    }
-//}
+        public ViewResult Index(string returnUrl)
+        {
+            return View();
+        }
+
+        public RedirectToActionResult AddToCart(int productid)
+        {
+            shoppingcartrepository.AddItem(productid, 1);
+
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult RemoveFromCart(int cartlineid)
+        {
+            shoppingcartrepository.RemoveItem(cartlineid);
+
+            return RedirectToAction("Index");
+        }
+    }
+}

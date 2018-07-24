@@ -10,6 +10,10 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication3.Models;
 using Microsoft.AspNetCore.Razor;
 using WebApplication3.Repository;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using SportsStore.Models;
 
 namespace WebApplication3
 {
@@ -32,6 +36,12 @@ namespace WebApplication3
             var connection = @"Server=localhost;Database=Electronics;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<ElectronicsContext>(options => options.UseSqlServer(connection));
             services.AddTransient<IProductRepository<Product>, ProductRepository>();
+            services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
+            services.AddScoped<ShoppingCartRepository>(sp => ShoppingCartSession.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
