@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication3.Models;
 using X.PagedList;
 using WebApplication3.Repository;
+using WebApplication3.Infrastructure;
+
 
 namespace WebApplication3.Controllers
 {

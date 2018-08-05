@@ -21,5 +21,19 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a> |
     <a asp-action="Index">Back to List</a> |
-    @Html.ActionLink(linkText: "AddtoCart", controllerName: "ShoppingCart", actionName: "AddtoCart", routeValues: new { productid = @Model.ProductId }))
+
+    <form id="@Model.ProductId" asp-action="AddToCart"
+          asp-controller="ShoppingCart" method="post">
+        <input type="image" asp-for="ProductId" />
+        <input type="image" name="returnUrl"
+               value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="card-text p-1">
+            @Model.ProductDescription
+            <button type="submit"
+                    class="btn btn-success btn-sm pull-right" style="float:right">
+                Add To Cart
+            </button>
+        </span>
+    </form>
+        @*@Html.ActionLink(linkText: "AddtoCart", controllerName: "ShoppingCart", actionName: "AddtoCart", routeValues: new { productid = @Model.ProductId }))*@
 </div>

@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using SportsStore.Models;
+using Microsoft.AspNetCore.Http;
+using WebApplication3.Infrastructure;
 
 namespace WebApplication3
 {
@@ -29,17 +31,17 @@ namespace WebApplication3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-            services.AddMemoryCache();
-            services.AddSession();
- 
+
             var connection = @"Server=localhost;Database=Electronics;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<ElectronicsContext>(options => options.UseSqlServer(connection));
             services.AddTransient<IProductRepository<Product>, ProductRepository>();
-            services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
+            //services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<ShoppingCartRepository>(sp => ShoppingCartSession.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
 
 
         }

@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Razor;
 using WebApplication3.Models;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplication3.Infrastructure;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApplication3
 {

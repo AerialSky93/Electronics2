@@ -5,10 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication3.Models;
 using WebApplication3.Repository;
+using WebApplication3.Infrastructure;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApplication3.Models
 {
-    public class ShoppingCartRepository : IShoppingCartRepository
+    public class ShoppingCartRepository 
     {
 
         private ShoppingCart ShoppingCart = new ShoppingCart();
@@ -28,6 +30,9 @@ namespace WebApplication3.Models
         {
             ShoppingCart.RemoveAll(l => l.CartLineId == cartlineid);
         }
+
+        public virtual IEnumerable<CartLine> Lines => ShoppingCart;
+
 
     }
 }

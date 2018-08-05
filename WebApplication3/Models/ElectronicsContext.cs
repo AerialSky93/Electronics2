@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using WebApplication3.Infrastructure;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApplication3.Models
 {

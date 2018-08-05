@@ -1,4 +1,5 @@
 using System;
+using WebApplication3.Infrastructure;
 
 namespace WebApplication3.Models
 {
