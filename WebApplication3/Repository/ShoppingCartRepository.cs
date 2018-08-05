@@ -13,25 +13,25 @@ namespace WebApplication3.Models
     public class ShoppingCartRepository 
     {
 
-        private ShoppingCart ShoppingCart = new ShoppingCart();
+        //private ShoppingCart ShoppingCart = new ShoppingCart();
+        private List<CartLine> lineCollection = new List<CartLine>();
 
-
-        public IEnumerable GetShoppingCart()
-        {
-            return ShoppingCart.ToList();
-        }
+        //public IEnumerable GetShoppingCart()
+        //{
+        //    return ShoppingCart.lineCollection.ToList();
+        //}
 
         public virtual void AddItem(int productid, int quantity)
         {
-            ShoppingCart.Add(new CartLine { ProductId = productid, Quantity = quantity });
+            lineCollection.Add(new CartLine { ProductId = productid, Quantity = quantity });
         }
 
         public virtual void RemoveItem(int cartlineid)
         {
-            ShoppingCart.RemoveAll(l => l.CartLineId == cartlineid);
+            lineCollection.RemoveAll(l => l.CartLineId == cartlineid);
         }
 
-        public virtual IEnumerable<CartLine> Lines => ShoppingCart;
+        public virtual IEnumerable<CartLine> Lines => lineCollection;
 
 
     }
