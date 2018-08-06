@@ -8,7 +8,7 @@ namespace WebApplication3.Models
     public partial class Inventory
     {
         public int InventoryId { get; set; }
-        public string Supplier { get; set; }
+        public Supplier Supplier { get; set; }
         public int InventoryQuantity { get; set; }
     }
 }

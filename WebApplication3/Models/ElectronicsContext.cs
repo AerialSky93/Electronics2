@@ -19,7 +19,7 @@ namespace WebApplication3.Models
 
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
-
+        public virtual DbSet<Inventory> Inventory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
