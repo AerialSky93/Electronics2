@@ -31,7 +31,8 @@ namespace WebApplication3.Controllers
 
         public RedirectToActionResult AddToCart(int productid, string returnUrl)
         {
-            shoppingcartrepository.AddItem(productid, 1);
+            Product product = productrepository.GetById(productid);
+            shoppingcartrepository.AddItem(product, 1);
 
             return RedirectToAction("Index", new { returnUrl });
         }

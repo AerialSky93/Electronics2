@@ -27,9 +27,9 @@ namespace WebApplication3.Models
         public ISession Session { get; set; }
 
 
-        public override void AddItem(int productid, int quantity)
+        public override void AddItem(Product product, int quantity)
         {
-            base.AddItem(productid, quantity);
+            base.AddItem(product, quantity);
             Session.SetJson("ShoppingCartRepository", this);
         }
 

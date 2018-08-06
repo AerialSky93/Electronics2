@@ -27,6 +27,8 @@ namespace WebApplication3.Repository
             return _context.Product.ToList();
         }
 
+        public IQueryable<Product> Products => _context.Product;
+
         public Product GetById(int productid)
         {
             return _context.Product.Find(productid);

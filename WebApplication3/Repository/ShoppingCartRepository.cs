@@ -14,16 +14,16 @@ namespace WebApplication3.Models
     {
 
         private ShoppingCart ShoppingCart = new ShoppingCart();
-        private List<CartLine> lineCollection = new List<CartLine>();
+        //private List<CartLine> lineCollection = new List<CartLine>();
 
         public IEnumerable GetShoppingCart()
         {
             return ShoppingCart.ToList();
         }
 
-        public virtual void AddItem(int productid, int quantity)
+        public virtual void AddItem(Product product, int quantity)
         {
-            ShoppingCart.Add(new CartLine { ProductId = productid, Quantity = quantity });
+            ShoppingCart.Add(new CartLine { Product = product, Quantity = quantity });
         }
 
         public virtual void RemoveItem(int cartlineid)
@@ -32,6 +32,7 @@ namespace WebApplication3.Models
         }
 
         public virtual IEnumerable<CartLine> Lines => ShoppingCart;
+
 
     }
 }
