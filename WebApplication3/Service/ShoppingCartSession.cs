@@ -9,7 +9,7 @@ using WebApplication3.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
-namespace SportsStore.Models
+namespace WebApplication3.Models
 {
 
     public class ShoppingCartSession : ShoppingCartRepository

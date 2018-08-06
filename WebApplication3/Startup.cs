@@ -13,7 +13,7 @@ using WebApplication3.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using SportsStore.Models;
+using WebApplication3.Models;
 using Microsoft.AspNetCore.Http;
 using WebApplication3.Infrastructure;
 
