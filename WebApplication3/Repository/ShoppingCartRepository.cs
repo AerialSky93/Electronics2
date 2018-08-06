@@ -24,7 +24,7 @@ namespace WebApplication3.Models
         public virtual void AddItem(int productid, int quantity)
         {
             lineCollection.Add(new CartLine { ProductId = productid, Quantity = quantity });
-        }
+            }
 
         public virtual void RemoveItem(int cartlineid)
         {
@@ -33,6 +33,12 @@ namespace WebApplication3.Models
 
         public virtual IEnumerable<CartLine> Lines => lineCollection;
 
+        public class CartLine
+        {
+            public int CartLineId { get; set; }
+            public int ProductId { get; set; }
+            public int Quantity { get; set; }
+        }
 
     }
 }
