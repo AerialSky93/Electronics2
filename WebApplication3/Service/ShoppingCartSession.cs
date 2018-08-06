@@ -18,7 +18,7 @@ namespace WebApplication3.Models
         public static ShoppingCartRepository GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            ShoppingCartSession shoppingcartsession = session?.GetJson<ShoppingCartSession>("Cart") ?? new ShoppingCartSession();
+            ShoppingCartSession shoppingcartsession = session?.GetJson<ShoppingCartSession>("ShoppingCartRepository") ?? new ShoppingCartSession();
             shoppingcartsession.Session = session;
             return shoppingcartsession;
         }
