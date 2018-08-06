@@ -42,6 +42,20 @@ namespace WebApplication3.Models
                  });
                  context.SaveChanges();
             }
+
+            if (!context.Supplier.Any())
+            {
+                context.Supplier.AddRange(
+                 new Supplier
+                 {
+                     SupplierName = "ABC Marketing",
+                 },
+                 new Supplier
+                 {
+                     SupplierName = "GT Warehouse"
+                 });
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace WebApplication3.Models
         }
 
         public virtual DbSet<Product> Product { get; set; }
-
+        public virtual DbSet<Supplier> Supplier { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,6 +30,14 @@ namespace WebApplication3.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.ProductName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Supplier>(entity =>
+            {
+
+                entity.Property(e => e.SupplierName)
                     .HasMaxLength(255)
                     .IsUnicode(false);
             });
