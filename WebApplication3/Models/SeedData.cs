@@ -21,7 +21,7 @@ namespace WebApplication3.Models
         public static void Initialize(IServiceProvider serviceProvider)
         {
             var context = serviceProvider.GetRequiredService<ElectronicsContext>();
-            context.Database.EnsureDeleted();
+            //context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
             if (!context.Product.Any())
             {

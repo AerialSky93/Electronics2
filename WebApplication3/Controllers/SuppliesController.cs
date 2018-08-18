@@ -39,6 +39,19 @@ namespace WebApplication3.Controllers
 
             // full path to file in temp location
             var filePath = Path.GetTempFileName();
+
+            foreach (var formFile in files)
+            {
+                if (formFile.Length > 0)
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await formFile.CopyToAsync(stream);
+                    }
+                }
+            }
+
+
             supplyrepository.ProcessFiles(filePath);
 
             // process uploaded files

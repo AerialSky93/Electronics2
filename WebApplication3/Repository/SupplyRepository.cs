@@ -38,7 +38,12 @@ namespace WebApplication3.Repository
         {
             //StreamReader reader = File.OpenText("filename.txt");
 
-            List<VendorSupply> values = File.ReadAllLines(@"C:\Users\duttar\Desktop\filename3.txt")
+            //List<VendorSupply> values = File.ReadAllLines(@"C:\Users\Ritwik\Desktop\filenametest.txt")
+            //                                .Select(v => VendorSupply.FromCsv(v))
+            //                                .ToList();
+
+
+            List<VendorSupply> values = File.ReadAllLines(filePath)
                                             .Select(v => VendorSupply.FromCsv(v))
                                             .ToList();
 
