@@ -31,6 +31,7 @@ namespace WebApplication3
             var connection = @"Server=localhost;Database=Electronics;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<ElectronicsContext>(options => options.UseSqlServer(connection));
             services.AddTransient<IProductRepository<Product>, ProductRepository>();
+            services.AddTransient<ISupplyRepository<Supply>, SupplyRepository>();
             //services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<ShoppingCartRepository>(sp => ShoppingCartSession.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

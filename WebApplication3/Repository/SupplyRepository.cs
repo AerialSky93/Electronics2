@@ -14,15 +14,19 @@ using System.IO;
 using System.Web.Http;
 namespace WebApplication3.Repository
 {
-    public class SupplyRepository
+    public class SupplyRepository : ISupplyRepository<Supply>
     {
         private readonly ElectronicsContext _context;
-        private ProductRepository productrepository;
-        private VendorRepository vendorrepository;
+        public ProductRepository productrepository;
+        public VendorRepository vendorrepository;
+
 
         public SupplyRepository(ElectronicsContext context)
         {
             _context = context;
+            productrepository = new ProductRepository(_context);
+            vendorrepository = new VendorRepository(_context);
+
         }
 
         public IEnumerable<Supply> GetAllSupply()
@@ -30,9 +34,9 @@ namespace WebApplication3.Repository
             return _context.Supply.ToList();
         }
 
-        public void ProcessFiles(string filePath)
+        public async void ProcessFiles(string filePath)
         {
-            StreamReader reader = File.OpenText("filename.txt");
+            //StreamReader reader = File.OpenText("filename.txt");
 
             List<VendorSupply> values = File.ReadAllLines(@"C:\Users\duttar\Desktop\filename3.txt")
                                             .Select(v => VendorSupply.FromCsv(v))
@@ -43,7 +47,7 @@ namespace WebApplication3.Repository
                 var product = productrepository.GetById(i.ProductId);
                 var vendor = vendorrepository.GetById(i.VendorId);
                 _context.Supply.Add(new Supply { Vendor = vendor, Product = product, SupplyQuantity = i.Quantity });
-
+                await _context.SaveChangesAsync();
             }
 
         }

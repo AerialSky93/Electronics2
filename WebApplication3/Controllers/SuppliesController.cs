@@ -15,13 +15,16 @@ namespace WebApplication3.Controllers
     public class SuppliesController : Controller
     {
         private readonly ElectronicsContext _context;
-        public SupplyRepository supplyrepository;
+        public ISupplyRepository<Supply> supplyrepository;
+        public IProductRepository<Product> productrepository;
 
-
-        public SuppliesController(ElectronicsContext context)
+        public SuppliesController(ElectronicsContext context, ISupplyRepository<Supply> supplyrepo, IProductRepository<Product> productrepo)
         {
             _context = context;
+            supplyrepository = supplyrepo;
+            productrepository = productrepo;
         }
+            
 
         // GET: Supplies
         public async Task<IActionResult> Index()
