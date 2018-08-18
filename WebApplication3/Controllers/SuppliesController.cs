@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebApplication3.Models;
-using WebApplication3.Repository;
+using ElectronicsStore.Models;
+using ElectronicsStore.Repository;
 
-namespace WebApplication3.Controllers
+namespace ElectronicsStore.Controllers
 {
     public class SuppliesController : Controller
     {

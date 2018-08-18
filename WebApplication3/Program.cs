@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Razor;
-using WebApplication3.Models;
+using ElectronicsStore.Models;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Http;
 
-namespace WebApplication3
+namespace ElectronicsStore
 {
     public class Program
     {

@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebApplication3.Models;
+using ElectronicsStore.Models;
 using X.PagedList;
-using WebApplication3.Repository;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Repository;
+using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Http;
 
-namespace WebApplication3.Repository
+namespace ElectronicsStore.Repository
 {
     public class ProductRepository : IProductRepository<Product>
     {

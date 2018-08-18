@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Infrastructure;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using WebApplication3.Models;
+using ElectronicsStore.Models;
 using X.PagedList;
 
 //https://dotnetthoughts.net/seed-database-in-aspnet-core/
 
-namespace WebApplication3.Models
+namespace ElectronicsStore.Models
 {
     public static class SeedData
     {

@@ -1,7 +1,7 @@
 using System;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Infrastructure;
 
-namespace WebApplication3.Models
+namespace ElectronicsStore.Models
 {
     public class ErrorViewModel
     {

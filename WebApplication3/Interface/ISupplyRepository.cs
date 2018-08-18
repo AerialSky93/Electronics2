@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WebApplication3.Models;
+using ElectronicsStore.Models;
 
-namespace WebApplication3.Repository
+namespace ElectronicsStore.Repository
 {
     public interface ISupplyRepository<T> where T : class
     {

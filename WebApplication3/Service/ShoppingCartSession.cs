@@ -4,12 +4,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using System.Web;
 using System.Linq;
-using WebApplication3.Models;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Models;
+using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
-namespace WebApplication3.Models
+namespace ElectronicsStore.Models
 {
 
     public class ShoppingCartSession : ShoppingCartRepository

@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using WebApplication3.Models;
+using ElectronicsStore.Models;
 using Microsoft.AspNetCore.Razor;
-using WebApplication3.Repository;
+using ElectronicsStore.Repository;
 using Microsoft.AspNetCore.Http;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Infrastructure;
 
-namespace WebApplication3
+namespace ElectronicsStore
 {
     public class Startup
     {

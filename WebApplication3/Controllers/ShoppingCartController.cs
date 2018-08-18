@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication3.Models;
-using WebApplication3.Repository;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Models;
+using ElectronicsStore.Repository;
+using ElectronicsStore.Infrastructure;
 
 
-namespace WebApplication3.Controllers
+namespace ElectronicsStore.Controllers
 {
 
     public class ShoppingCartController : Controller

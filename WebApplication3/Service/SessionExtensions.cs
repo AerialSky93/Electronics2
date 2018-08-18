@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Infrastructure;
 
-namespace WebApplication3.Infrastructure
+namespace ElectronicsStore.Infrastructure
 {
 
     public static class SessionExtensions

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication3.Models;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Models;
+using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Http;
 
-namespace WebApplication3.Models
+namespace ElectronicsStore.Models
 {
     public class ShoppingCart : List<CartLine>
     {

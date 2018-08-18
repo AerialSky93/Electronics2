@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
-using WebApplication3.Models;
-using WebApplication3.Repository;
+using ElectronicsStore.Models;
+using ElectronicsStore.Repository;
 
-namespace WebApplication3.Components
+namespace ElectronicsStore.Components
 {
 
     public class CartSummaryViewComponent : ViewComponent

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using WebApplication3.Infrastructure;
+using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Http;
 
-namespace WebApplication3.Models
+namespace ElectronicsStore.Models
 {
     public partial class VendorSupply
     {
