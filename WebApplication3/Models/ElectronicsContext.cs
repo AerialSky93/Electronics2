@@ -18,8 +18,8 @@ namespace WebApplication3.Models
         }
 
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<Supplier> Supplier { get; set; }
-        public virtual DbSet<Inventory> Inventory { get; set; }
+        public virtual DbSet<Vendor> Vendor { get; set; }
+        public virtual DbSet<Supply> Supply { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,10 +34,10 @@ namespace WebApplication3.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Supplier>(entity =>
+            modelBuilder.Entity<Vendor>(entity =>
             {
 
-                entity.Property(e => e.SupplierName)
+                entity.Property(e => e.VendorName)
                     .HasMaxLength(255)
                     .IsUnicode(false);
             });

@@ -43,16 +43,16 @@ namespace WebApplication3.Models
                  context.SaveChanges();
             }
 
-            if (!context.Supplier.Any())
+            if (!context.Vendor.Any())
             {
-                context.Supplier.AddRange(
-                 new Supplier
+                context.Vendor.AddRange(
+                 new Vendor
                  {
-                     SupplierName = "ABC Marketing",
+                     VendorName = "ABC Marketing",
                  },
-                 new Supplier
+                 new Vendor
                  {
-                     SupplierName = "GT Warehouse"
+                     VendorName = "GT Warehouse"
                  });
                 context.SaveChanges();
             }
