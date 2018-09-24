@@ -12,6 +12,8 @@ using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Web.Http;
+//using ElectronicsStore.Service;
+
 namespace ElectronicsStore.Repository
 {
     public class SupplyRepository : ISupplyRepository<Supply>
@@ -34,28 +36,28 @@ namespace ElectronicsStore.Repository
             return _context.Supply.ToList();
         }
 
-        public async void ProcessFiles(string filePath)
-        {
-            //StreamReader reader = File.OpenText("filename.txt");
+        //public async void ProcessFiles(string filePath)
+        //{
+        //    //StreamReader reader = File.OpenText("filename.txt");
 
-            //List<VendorSupply> values = File.ReadAllLines(@"C:\Users\Ritwik\Desktop\filenametest.txt")
-            //                                .Select(v => VendorSupply.FromCsv(v))
-            //                                .ToList();
+        //    //List<VendorSupply> values = File.ReadAllLines(@"C:\Users\Ritwik\Desktop\filenametest.txt")
+        //    //                                .Select(v => VendorSupply.FromCsv(v))
+        //    //                                .ToList();
 
 
-            List<VendorSupply> values = File.ReadAllLines(filePath)
-                                            .Select(v => VendorSupply.FromCsv(v))
-                                            .ToList();
+        //    List<VendorSupply> values = File.ReadAllLines(filePath)
+        //                                    .Select(v => ParseVendorSupply.FromCsv(v))
+        //                                    .ToList();
 
-            foreach (VendorSupply i in values)
-            {
-                var product = productrepository.GetById(i.ProductId);
-                var vendor = vendorrepository.GetById(i.VendorId);
-                _context.Supply.Add(new Supply { Vendor = vendor, Product = product, SupplyQuantity = i.Quantity });
-                await _context.SaveChangesAsync();
-            }
+        //    foreach (VendorSupply i in values)
+        //    {
+        //        var product = productrepository.GetById(i.ProductId);
+        //        var vendor = vendorrepository.GetById(i.VendorId);
+        //        _context.Supply.Add(new Supply { Vendor = vendor, Product = product, SupplyQuantity = i.Quantity });
+        //        await _context.SaveChangesAsync();
+        //    }
 
-        }
+        //}
 
         public IQueryable<Supply> Supply => _context.Supply;
 

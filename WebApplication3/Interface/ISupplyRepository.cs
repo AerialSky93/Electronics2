@@ -10,6 +10,6 @@ namespace ElectronicsStore.Repository
 
         IEnumerable<Supply> GetAllSupply();
         Product GetById(int SupplyId);
-        void ProcessFiles(string filePath);
+       // void ProcessFiles(string filePath);
     }
 }
