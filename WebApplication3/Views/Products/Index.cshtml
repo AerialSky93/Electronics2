@@ -1,6 +1,4 @@
-﻿<!--https://www.jerriepelser.com/blog/approaches-when-rendering-list-using-bootstrap-grid-system/-->
-
-
+﻿
 @model IPagedList<ElectronicsStore.Models.Product>
 @{
     ViewBag.Title = "Products";
@@ -8,32 +6,48 @@
 }
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
-<!-- import the included stylesheet for some (very basic) default styling -->
-<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-<div class="row">
-    @foreach (var item in ViewBag.OnePageOfProducts)
-    {
-        if (counter != 0 && counter % 1 == 0)
+
+<table class="table" >
+    <thead>
+        <tr>
+            <th class="col3">
+               f @*@Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)*@
+            </th>
+            <th class="col4">
+                f@*@Html.DisplayNameFor(model => model.FirstOrDefault().ProductDescription)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in ViewBag.OnePageOfProducts)
         {
-        @:</div>
-        @:<div class="row">
-        }
-
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <a href = '@Url.Action("Details","Products" , new { id=item.ProductId })'>
-                <img src="file:///C:/Pictures/TV.jpg" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+        <tr>
+            <td class="col3">
+      
+                    <a href='@Url.Action("Details","Products" , new { id=item.ProductId })'>
+                        <img src="~/images/@(item.ImageLocation)"  data-holder-rendered="true" >
                     </a>
-                <div class="caption">
-                    <!--<h3 id="thumbnail-label">@item.ProductName</h3>-->
-                    <p>@item.ProductName</p>
-                </div>
-            </div>
-        </div>
+                    <div class="caption">
 
-        counter++;
-    }
-</div>
+            </td>
+            @*<td class="col3">
+                <img src="~/images/@(item.ImageLocation)" data-holder-rendered="true" />
+
+            </td>*@
+            <td class="col4">
+                
+                    <br />
+                    @item.ProductName
+                 
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
 
 @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
