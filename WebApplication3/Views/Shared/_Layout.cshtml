@@ -17,27 +17,44 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ElectronicsStore</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact"><div class="div.c">Test Right.</div></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-inverse">  
+        <div class="container-fluid">  
+            <!--Navbar Header Start Here-->  
+            <div class="navbar-header">  
+                <a class="navbar-brand" href="#"><font color="#fff"><b>Electronics</b></font></a>  
+            </div>  
+            <!--Navbar Header End Here-->  
+            <!--Menu Start Here-->  
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <!--dropdown Menu Start-->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Technology
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">.NET</a></li>
+                        <li><a href="#">HTML5</a></li>
+                        <li><a href="#">ASP.NET MVC</a></li>
+                        <li><a href="#">Java</a></li>
+                    </ul>
+                </li>
+                <!--dropdown Menu End-->
+                <li><a href="#">Contact Us</a></li>
+            </ul>  
+            <!--Menu End Here-->  
+            <!--Right Aligned Menu Start-->  
+            <ul class="nav navbar-nav navbar-right">  
+                <li><a href="#"><font color="#fff">Login</font></a></li>  
+                <li><a href="#"><font color="#fff">Cart</font></a></li>  
+            </ul>  
+            <!--Right Aligned Menu End-->  
+        </div>  
+    </nav>  
     <div class="container body-content">
         @RenderBody()
         <hr />

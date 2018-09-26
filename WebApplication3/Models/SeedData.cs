@@ -21,7 +21,7 @@ namespace ElectronicsStore.Models
         public static void Initialize(IServiceProvider serviceProvider)
         {
             var context = serviceProvider.GetRequiredService<ElectronicsContext>();
-            //context.Database.EnsureDeleted();
+            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
             if (!context.Product.Any())
             {
@@ -43,8 +43,14 @@ namespace ElectronicsStore.Models
                      ProductName = "Panasonic On-Ear Stereo Headphones RP-HT21 ",
                      ProductDescription = "Lightweight, open-air design on-ear headphones weigh just 1.2 oz. (without cable). Connectivity Technology: Wired;30mm large neodymium drivers deliver rich powerful bass and natural treble.",
                      ImageLocation = "Product3.jpg"
-                 });
-                 context.SaveChanges();
+                 },
+                new Product
+                {
+                    ProductName = "Canon TS8220 Wireless All in One Photo Printer, Black",
+                    ProductDescription = "Introducing the sleek and streamlined PIXMA TS8220 Wireless Inkjet All-In-One home printer, available in Black, White and Red color options. The PIXMA TS8220 is a high-end Inkjet All-In-One printer designed with fast prints, robust features and lots of connectivity options in mind. ",
+                    ImageLocation = "Product4.jpg"
+                });
+                context.SaveChanges();
             }
 
             if (!context.Vendor.Any())
