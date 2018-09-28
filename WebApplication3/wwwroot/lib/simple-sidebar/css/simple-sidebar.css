@@ -26,9 +26,9 @@ body {
   left: 250px;
   width: 0;
   height: 100%;
-  margin-left: -50px;
+  margin-left: -250px;
   overflow-y: auto;
-  background: #fff; /*#B22222*/
+  background: #fff;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;

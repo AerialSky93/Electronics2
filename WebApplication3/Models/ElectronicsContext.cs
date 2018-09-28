@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Http;
+using ElectronicsStore.Models;
 
 namespace ElectronicsStore.Models
 {
@@ -20,6 +21,7 @@ namespace ElectronicsStore.Models
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Vendor> Vendor { get; set; }
         public virtual DbSet<Supply> Supply { get; set; }
+        public virtual DbSet<Supply> Customer { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -41,6 +43,44 @@ namespace ElectronicsStore.Models
                     .HasMaxLength(255)
                     .IsUnicode(false);
             });
+
+            modelBuilder.Entity<Customer>(entity =>
+            {
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(255)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LastName)
+                    .HasMaxLength(255)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.AddressLine)
+                    .HasMaxLength(255)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.City)
+                    .HasMaxLength(55)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.StateCode)
+                    .HasMaxLength(3)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ZipCode)
+                    .HasMaxLength(10)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+            });
+
+
         }
+
+        public DbSet<ElectronicsStore.Models.Customer> Customer_1 { get; set; }
     }
 }

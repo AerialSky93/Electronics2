@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ElectronicsStore</title>
-    @*<link rel="stylesheet" href="~/lib/simple-sidebar/css/simple-sidebar.css">*@
+    <link rel="stylesheet" href="~/lib/simple-sidebar/css/simple-sidebar.css">
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -55,8 +55,11 @@
             <!--Right Aligned Menu End-->
         </div>
     </nav>
-    @*<div id="wrapper" class="toggled">*@
-        @*<div id="sidebar-wrapper">
+
+    <div id="wrapper" class="toggled">
+
+        <!-- you nav on left side -->
+        <div id="sidebar-wrapper">
             <a id="menu-toggle" href="#menu-toggle" class="btn btn-secondary">三</a>
             <ul class="sidebar-nav" style="margin-top:15px;">
                 <li class="sidebar-brand">
@@ -66,11 +69,9 @@
                     <a asp-page="/Pinpad" class="navbar-brand">Pinpad</a>
                 </li>
             </ul>
-        </div>*@
-    <div class ="sideNavBox">
-        test
-    </div>
-    <div class="column">
+        </div>
+
+        <!-- your main body here -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 @RenderBody()
@@ -78,8 +79,6 @@
             <footer></footer>
         </div>
     </div>
-    <div class="column">test</div>
-    @*</div>*@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
