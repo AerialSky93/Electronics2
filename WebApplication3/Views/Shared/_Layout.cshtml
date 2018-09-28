@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ElectronicsStore</title>
-
+    @*<link rel="stylesheet" href="~/lib/simple-sidebar/css/simple-sidebar.css">*@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -17,14 +17,14 @@
     </environment>
 </head>
 <body>
-<nav class="navbar navbar-inverse">  
-        <div class="container-fluid">  
-            <!--Navbar Header Start Here-->  
-            <div class="navbar-header">  
-                <a class="navbar-brand" href="#"><font color="#fff"><b>Electronics</b></font></a>  
-            </div>  
-            <!--Navbar Header End Here-->  
-            <!--Menu Start Here-->  
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!--Navbar Header Start Here-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><font color="#fff"><b>Electronics</b></font></a>
+            </div>
+            <!--Navbar Header End Here-->
+            <!--Menu Start Here-->
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -45,24 +45,41 @@
                 </li>
                 <!--dropdown Menu End-->
                 <li><a href="#">Contact Us</a></li>
-            </ul>  
-            <!--Menu End Here-->  
-            <!--Right Aligned Menu Start-->  
-            <ul class="nav navbar-nav navbar-right">  
-                <li><a href="#"><font color="#fff">Login</font></a></li>  
-                <li><a href="#"><font color="#fff">Cart</font></a></li>  
-            </ul>  
-            <!--Right Aligned Menu End-->  
-        </div>  
-    </nav>  
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - ElectronicsStore</p>
-        </footer>
+            </ul>
+            <!--Menu End Here-->
+            <!--Right Aligned Menu Start-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><font color="#fff">Login</font></a></li>
+                <li><a href="#"><font color="#fff">Cart</font></a></li>
+            </ul>
+            <!--Right Aligned Menu End-->
+        </div>
+    </nav>
+    @*<div id="wrapper" class="toggled">*@
+        @*<div id="sidebar-wrapper">
+            <a id="menu-toggle" href="#menu-toggle" class="btn btn-secondary">三</a>
+            <ul class="sidebar-nav" style="margin-top:15px;">
+                <li class="sidebar-brand">
+                    <a asp-page="/Index" class="navbar-brand">Home</a>
+                </li>
+                <li>
+                    <a asp-page="/Pinpad" class="navbar-brand">Pinpad</a>
+                </li>
+            </ul>
+        </div>*@
+    <div class ="sideNavBox">
+        test
     </div>
-
+    <div class="column">
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+            <footer></footer>
+        </div>
+    </div>
+    <div class="column">test</div>
+    @*</div>*@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
@@ -83,7 +100,6 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>

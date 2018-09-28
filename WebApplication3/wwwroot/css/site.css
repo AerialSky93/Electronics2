@@ -81,3 +81,11 @@
 div.c {
     text-align: right;
 }
+
+
+.sideNavBox {
+    width: 250px;
+    position: fixed;
+    left: 0;
+    background-color: #545555;
+}
