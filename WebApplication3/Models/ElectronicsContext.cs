@@ -19,9 +19,11 @@ namespace ElectronicsStore.Models
         }
 
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
         public virtual DbSet<Vendor> Vendor { get; set; }
         public virtual DbSet<Supply> Supply { get; set; }
-        public virtual DbSet<Supply> Customer { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +36,12 @@ namespace ElectronicsStore.Models
                 entity.Property(e => e.ProductName)
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+
+                entity.HasOne(d => d.ProductCategory)
+                    .WithMany(p => p.Product)
+                    .HasForeignKey(d => d.ProductCategoryId)
+                    .HasConstraintName("FK_Product_ProductCategory");
             });
 
             modelBuilder.Entity<Vendor>(entity =>
@@ -78,7 +86,18 @@ namespace ElectronicsStore.Models
 
             });
 
+            modelBuilder.Entity<ProductCategory>(entity =>
+            {
+                entity.Property(e => e.ProductCategoryDescription)
+                    .HasMaxLength(8000)
+                    .IsUnicode(false);
 
+                entity.Property(e => e.ProductCategoryName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+
+            });
         }
 
         public DbSet<ElectronicsStore.Models.Customer> Customer_1 { get; set; }

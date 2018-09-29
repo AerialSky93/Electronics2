@@ -7,15 +7,45 @@
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
 
-
-<table class="table" >
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="#">
+                Start Bootstrap
+            </a>
+        </li>
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+        <li>
+            <a href="#">Shortcuts</a>
+        </li>
+        <li>
+            <a href="#">Overview</a>
+        </li>
+        <li>
+            <a href="#">Events</a>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+        <li>
+            <a href="#">Services</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+    </ul>
+</div>
+<!-- /#sidebar-wrapper -->
+<table class="table">
     <thead>
         <tr>
             <th class="col3">
-               f @*@Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)*@
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)*@
             </th>
             <th class="col4">
-                f@*@Html.DisplayNameFor(model => model.FirstOrDefault().ProductDescription)*@
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().ProductDescription)*@
             </th>
             <th></th>
         </tr>
@@ -24,26 +54,26 @@
     <tbody>
         @foreach (var item in ViewBag.OnePageOfProducts)
         {
-        <tr>
-            <td class="col3">
-      
+            <tr>
+                <td class="col3">
+
                     <a href='@Url.Action("Details","Products" , new { id=item.ProductId })'>
-                        <img src="~/images/@(item.ImageLocation)"  data-holder-rendered="true" >
+                        <img src="~/images/@(item.ImageLocation)" data-holder-rendered="true">
                     </a>
                     <div class="caption">
 
-            </td>
-            @*<td class="col3">
-                <img src="~/images/@(item.ImageLocation)" data-holder-rendered="true" />
+                </td>
+                @*<td class="col3">
+                        <img src="~/images/@(item.ImageLocation)" data-holder-rendered="true" />
 
-            </td>*@
-            <td class="col4">
-                
+                    </td>*@
+                <td class="col4">
+
                     <br />
                     @item.ProductName
-                 
-            </td>
-        </tr>
+
+                </td>
+            </tr>
         }
     </tbody>
 </table>

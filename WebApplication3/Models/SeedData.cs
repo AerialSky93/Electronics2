@@ -23,6 +23,26 @@ namespace ElectronicsStore.Models
             var context = serviceProvider.GetRequiredService<ElectronicsContext>();
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
+
+            if (!context.Vendor.Any())
+            {
+                context.ProductCategory.AddRange(
+                 new ProductCategory
+                 {
+                     ProductCategoryName = "TV",
+                 },
+                 new ProductCategory
+                 {
+                     ProductCategoryName = "Computer Drive"
+                 },
+                new ProductCategory
+                 {
+                     ProductCategoryName = "Headphones",
+                 });
+                context.SaveChanges();
+            }
+
+
             if (!context.Product.Any())
             {
                 context.Product.AddRange(

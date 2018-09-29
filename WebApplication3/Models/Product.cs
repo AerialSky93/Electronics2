@@ -11,5 +11,8 @@ namespace ElectronicsStore.Models
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public string ImageLocation { get; set; }
+
+        public int? ProductCategoryId { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
     }
 }
