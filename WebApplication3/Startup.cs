@@ -12,11 +12,16 @@ using Microsoft.AspNetCore.Razor;
 using ElectronicsStore.Repository;
 using Microsoft.AspNetCore.Http;
 using ElectronicsStore.Infrastructure;
+using Microsoft.Extensions.Caching.Memory;
+
 
 namespace ElectronicsStore
 {
     public class Startup
     {
+
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,6 +36,7 @@ namespace ElectronicsStore
             var connection = @"Server=localhost;Database=Electronics;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<ElectronicsContext>(options => options.UseSqlServer(connection));
             services.AddTransient<IProductRepository<Product>, ProductRepository>();
+            services.AddTransient<IProductCategoryRepository<ProductCategory>, ProductCategoryRepository>();
             services.AddTransient<ISupplyRepository<Supply>, SupplyRepository>();
             //services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<ShoppingCartRepository>(sp => ShoppingCartSession.GetCart(sp));
@@ -40,6 +46,7 @@ namespace ElectronicsStore
             services.AddMemoryCache();
             services.AddSession();
 
+            services.AddSingleton<IScheduledStuff,ScheduledStuff>();
 
         }
 

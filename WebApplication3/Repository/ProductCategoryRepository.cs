@@ -13,26 +13,27 @@ using Microsoft.AspNetCore.Http;
 
 namespace ElectronicsStore.Repository
 {
-    public class ProductRepository : IProductRepository<Product>
+    public class ProductCategoryRepository : IProductCategoryRepository<ProductCategory>
     {
         private readonly ElectronicsContext _context;
-        public ProductRepository(ElectronicsContext context)
+
+        public ProductCategoryRepository(ElectronicsContext context)
         {
             _context = context;
         }
 
-        public IEnumerable<Product> GetAllProduct()
+        public IEnumerable<ProductCategory> GetAllProductCategory()
         {
-            return _context.Product.ToList();
+            return _context.ProductCategory.ToList();
         }
 
-        public IQueryable<Product> Products => _context.Product;
+        public IQueryable<ProductCategory> ProductCategory => _context.ProductCategory;
 
-        public Product GetById(int productid)
-        {
-            return _context.Product.Find(productid);
+        //public Product GetById(int productid)
+        //{
+        //    return _context.Product.Find(productid);
             
-        }
+        //}
 
     }
 }

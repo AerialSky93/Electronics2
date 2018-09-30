@@ -52,17 +52,17 @@ namespace ElectronicsStore.Controllers
         //    }
 
 
-        //    supplyrepository.ProcessFiles(filePath);
+            //    supplyrepository.ProcessFiles(filePath);
 
-        //    // process uploaded files
-        //    // Don't rely on or trust the FileName property without validation.
+            //    // process uploaded files
+            //    // Don't rely on or trust the FileName property without validation.
 
-        //    return Ok(new { count = files.Count, size, filePath });
-        //}
+            //    return Ok(new { count = files.Count, size, filePath });
+            //}
 
 
-        // GET: Supplies/Details/5
-        public async Task<IActionResult> Details(int? id)
+            // GET: Supplies/Details/5
+            public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {

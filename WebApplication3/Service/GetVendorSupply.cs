@@ -16,8 +16,9 @@
 //        foreach (VendorSupply i in values)
 //        {
 //            var product = productrepository.GetById(i.ProductId);
-//            var vendor = vendorrepository.GetById(i.VendorId);
-//            _context.Supply.Add(new Supply { Vendor = vendor, Product = product, SupplyQuantity = i.Quantity});
+//        var vendor = vendorrepository.GetById(i.VendorId);
+//        _context.Supply.Add(new Supply { Vendor = vendor, Product = product, SupplyQuantity = i.Quantity
+//    });
 //            await _context.SaveChangesAsync();
 //}
 

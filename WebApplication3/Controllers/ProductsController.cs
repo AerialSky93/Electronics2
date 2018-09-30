@@ -8,7 +8,7 @@ using ElectronicsStore.Models;
 using X.PagedList;
 using ElectronicsStore.Repository;
 using ElectronicsStore.Infrastructure;
-
+using Microsoft.Extensions.Caching.Memory;
 
 namespace ElectronicsStore.Controllers
 {
@@ -17,10 +17,16 @@ namespace ElectronicsStore.Controllers
 
         public ElectronicsContext _context;
         public IProductRepository<Product> productrepository;
+        private IMemoryCache _cache;
+        public IScheduledStuff _scheduledstuff;
 
-        public ProductsController(IProductRepository<Product> repo)
+
+        public ProductsController(IProductRepository<Product> repo, IMemoryCache memoryCache, IScheduledStuff scheduledstuff)
         {
             productrepository =repo;
+            _cache = memoryCache;
+            _scheduledstuff = scheduledstuff;
+            _scheduledstuff.ScheduleItemsExecute();
         }
 
         // GET: Products
@@ -28,10 +34,12 @@ namespace ElectronicsStore.Controllers
         {
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            //var onePageOfProducts = _context.Product.ToPagedList(pageNumber, pageSize);
-
             var onePageOfProducts = productrepository.GetAllProduct().ToPagedList(pageNumber, pageSize);
+
             ViewBag.OnePageOfProducts = onePageOfProducts;
+            
+            ViewBag.ProductCategoryList = _cache.Get<IEnumerable<ProductCategory>>("ProductCategoryList");
+            
             return View();
 
         }
