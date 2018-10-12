@@ -13,7 +13,7 @@ using ElectronicsStore.Repository;
 using Microsoft.AspNetCore.Http;
 using ElectronicsStore.Infrastructure;
 using Microsoft.Extensions.Caching.Memory;
-
+using Microsoft.AspNetCore.Mvc;
 
 namespace ElectronicsStore
 {
@@ -42,7 +42,7 @@ namespace ElectronicsStore
             services.AddScoped<ShoppingCartRepository>(sp => ShoppingCartSession.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
             services.AddSession();
 

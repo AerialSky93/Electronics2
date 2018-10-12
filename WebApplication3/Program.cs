@@ -28,6 +28,7 @@ namespace ElectronicsStore
                 try
                 {
                     SeedData.Initialize(services);
+                    SeedData2.Initialize(services);
                 }
                 catch (Exception ex)
                 {
