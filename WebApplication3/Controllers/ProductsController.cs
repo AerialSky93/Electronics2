@@ -13,15 +13,15 @@ namespace ElectronicsStore.Controllers
     {
 
         public ElectronicsContext _context;
-        public IProductRepository<Product> productrepository;
-        private IMemoryCache _cache;
+        public IProductRepository<Product> _ProductRepository;
+        private IMemoryCache _memoryCache;
         public IScheduledStuff _scheduledstuff;
 
 
         public ProductsController(IProductRepository<Product> repo, IMemoryCache memoryCache, IScheduledStuff scheduledstuff)
         {
-            productrepository =repo;
-            _cache = memoryCache;
+            _ProductRepository = repo;
+            _memoryCache = memoryCache;
             _scheduledstuff = scheduledstuff;
             _scheduledstuff.ScheduleItemsExecute();
         }
@@ -31,11 +31,11 @@ namespace ElectronicsStore.Controllers
         {
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            var onePageOfProducts = productrepository.GetAllProduct().ToPagedList(pageNumber, pageSize);
+            var onePageOfProducts = _ProductRepository.GetAllProduct().ToPagedList(pageNumber, pageSize);
 
             ViewBag.OnePageOfProducts = onePageOfProducts;
             
-            ViewBag.ProductCategoryList = _cache.Get<IEnumerable<ProductCategory>>("ProductCategoryList");
+            ViewBag.ProductCategoryList = _memoryCache.Get<IEnumerable<ProductCategory>>("ProductCategoryList");
             
             return View();
 
@@ -45,7 +45,7 @@ namespace ElectronicsStore.Controllers
         public async Task<IActionResult> Details(int id)
         {
 
-            var product = productrepository.GetById(id);
+            var product = _ProductRepository.GetById(id);
             if (product == null)
             {
                 return NotFound();
@@ -53,29 +53,6 @@ namespace ElectronicsStore.Controllers
 
             return View(product);
         }
-
-  
-        //private bool ProductExists(int id)
-        //{
-        //    return _context.Product.Any(e => e.ProductId == id);
-        //}
-
-
-
-
-        //// GET: Products/Details/5
-        //public async Task<IActionResult> AddToCart(int productid)
-        //{
-        //    shoppingcartrepository.AddItem(productid,1);
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //// GET: ShoppingCart
-        //public async Task<IActionResult> ViewShoppingCart()
-        //{
-        //    return View(shoppingcartrepository.GetShoppingCart());
-        //}
-
 
     }
 }

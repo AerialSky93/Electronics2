@@ -1,5 +1,7 @@
 ﻿
-namespace ElectronicsStore.Models
+using ElectronicsStore.Models;
+
+namespace ElectronicsStore.Repository
 {
     public interface IShoppingCartRepository<T> where T : class
     {
