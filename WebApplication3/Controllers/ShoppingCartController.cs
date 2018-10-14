@@ -1,9 +1,6 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ElectronicsStore.Models;
 using ElectronicsStore.Repository;
-using ElectronicsStore.Infrastructure;
-
 
 namespace ElectronicsStore.Controllers
 {
@@ -24,7 +21,7 @@ namespace ElectronicsStore.Controllers
         {
             return View(new ShoppingCartIndexViewModel
             {
-                ShoppingCartRepository = shoppingcartrepository,
+                ShoppingCart = shoppingcartrepository.GetShoppingCart(),
                 ReturnUrl = returnUrl
             });
         }
