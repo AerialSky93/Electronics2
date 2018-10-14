@@ -14,8 +14,6 @@ namespace ElectronicsStore
     public class Startup
     {
 
-
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,7 +30,6 @@ namespace ElectronicsStore
             services.AddTransient<IProductRepository<Product>, ProductRepository>();
             services.AddTransient<IProductCategoryRepository<ProductCategory>, ProductCategoryRepository>();
             services.AddTransient<ISupplyRepository<Supply>, SupplyRepository>();
-            //services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<ShoppingCartRepository>(sp => ShoppingCartSession.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -40,7 +37,7 @@ namespace ElectronicsStore
             services.AddMemoryCache();
             services.AddSession();
 
-            services.AddSingleton<IScheduledStuff,ScheduledStuff>();
+            services.AddSingleton<IMemoryContainer,MemoryContainer>();
 
         }
 

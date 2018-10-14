@@ -13,17 +13,17 @@ namespace ElectronicsStore.Controllers
     {
 
         public ElectronicsContext _context;
-        public IProductRepository<Product> _ProductRepository;
+        private IProductRepository<Product> _ProductRepository;
         private IMemoryCache _memoryCache;
-        public IScheduledStuff _scheduledstuff;
+        public IMemoryContainer _MemoryContainer;
 
 
-        public ProductsController(IProductRepository<Product> repo, IMemoryCache memoryCache, IScheduledStuff scheduledstuff)
+        public ProductsController(IProductRepository<Product> repo, IMemoryCache memoryCache, IMemoryContainer MemoryContainer)
         {
             _ProductRepository = repo;
             _memoryCache = memoryCache;
-            _scheduledstuff = scheduledstuff;
-            _scheduledstuff.ScheduleItemsExecute();
+            _MemoryContainer = MemoryContainer;
+            _MemoryContainer.MemoryItemsExecute();
         }
 
         // GET: Products

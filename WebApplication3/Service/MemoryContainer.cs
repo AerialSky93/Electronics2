@@ -6,27 +6,27 @@ using ElectronicsStore.Models;
 
 namespace ElectronicsStore.Infrastructure
 {
-    public class ScheduledStuff : IScheduledStuff
+    public class MemoryContainer : IMemoryContainer
     {
         private readonly ElectronicsContext _context;
         IMemoryCache MemCache;
-        public IProductCategoryRepository<ProductCategory> productcategoryrepository;
+        private IProductCategoryRepository<ProductCategory> _productCategoryRepository;
 
-        public ScheduledStuff(ElectronicsContext context, IMemoryCache memCache)
+        public MemoryContainer(ElectronicsContext context, IMemoryCache memCache)
         {
             _context = context;
             MemCache = memCache;
-            productcategoryrepository = new ProductCategoryRepository(_context);
+            _productCategoryRepository = new ProductCategoryRepository(_context);
         }
 
-        public void ScheduleItemsExecute()
+        public void MemoryItemsExecute()
         {
             //System.NullReferenceException: 'Object reference not set to an instance of an object.'
 
             if (MemCache.Get<IEnumerable<ProductCategory>>("ProductCategoryList") == null)
             { 
-                var testdata = productcategoryrepository.GetAllProductCategory();
-                MemCache.Set("ProductCategoryList", testdata);
+                var productCategory = _productCategoryRepository.GetAllProductCategory();
+                MemCache.Set("ProductCategoryList", productCategory);
             }
 
         }
