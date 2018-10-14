@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ElectronicsStore.Infrastructure;
-using Microsoft.AspNetCore.Http;
-
-namespace ElectronicsStore.Models
+﻿namespace ElectronicsStore.Models
 {
     public class CartLine
     {

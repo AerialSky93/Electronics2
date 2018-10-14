@@ -1,9 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using ElectronicsStore.Infrastructure;
-using Microsoft.AspNetCore.Http;
-using ElectronicsStore.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ElectronicsStore.Models
 {

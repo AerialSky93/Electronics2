@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using ElectronicsStore.Infrastructure;
-using Microsoft.AspNetCore.Http;
 using ElectronicsStore.Models;
 
 namespace ElectronicsStore.Service

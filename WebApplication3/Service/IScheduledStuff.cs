@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-
-namespace ElectronicsStore.Infrastructure
+﻿namespace ElectronicsStore.Infrastructure
 {
     public interface IScheduledStuff
     {

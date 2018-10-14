@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using ElectronicsStore.Infrastructure;
-using Microsoft.AspNetCore.Http;
-
-namespace ElectronicsStore.Models
+﻿namespace ElectronicsStore.Models
 {
     public partial class Product
     {

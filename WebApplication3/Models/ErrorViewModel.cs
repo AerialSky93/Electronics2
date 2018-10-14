@@ -1,6 +1,3 @@
-using System;
-using ElectronicsStore.Infrastructure;
-
 namespace ElectronicsStore.Models
 {
     public class ErrorViewModel
