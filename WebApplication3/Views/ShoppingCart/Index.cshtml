@@ -1,13 +1,10 @@
-﻿@model ShoppingCartIndexViewModel
+﻿@model ShoppingCartViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
 <h2>Shopping Cart</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -43,10 +40,26 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Product.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Product.ProductId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Product.ProductId">Delete</a>
+                
+                
+            <a asp-action="RemoveFromCart" method="post">
+                <input type="hidden" name="ProductID" asp-for="@item.Product.ProductId" />
+                <input type="hidden" name="returnUrl"
+                       value="@Model.ReturnUrl" />
+                    Remove from Cart
+            </a>
+
             </td>
         </tr>
         }
     </tbody>
 </table>
+@*<input type="hidden" asp-for="@item.Product.ProductId" />
+<input type="hidden" name="returnUrl"
+       value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+<span class="card-text p-1">
+    <button type="submit"
+            class="btn btn-success btn-sm pull-right" style="float:right">
+        Add To Cart
+    </button>
+</span>*@

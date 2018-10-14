@@ -1,6 +1,6 @@
 ﻿
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace ElectronicsStore.Models
 {
@@ -17,7 +17,24 @@ namespace ElectronicsStore.Models
 
         public virtual void AddItem(Product product, int quantity)
         {
-            shoppingCart.Add(new CartLine { Product = product, Quantity = quantity });
+            shoppingCart.Find(p => p.Product == product);
+
+            CartLine cartline = shoppingCart.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
+
+            if (cartline == null)
+            {
+                shoppingCart.Add(new CartLine
+                {
+                    Product = product,
+                    Quantity = quantity
+                });
+            }
+            else
+            {
+                cartline.Quantity += quantity;
+
+            }
+
         }
 
         public virtual void RemoveItem(int cartlineid)

@@ -19,7 +19,7 @@ namespace ElectronicsStore.Controllers
 
         public ViewResult Index(string returnUrl)
         {
-            return View(new ShoppingCartIndexViewModel
+            return View(new ShoppingCartViewModel
             {
                 ShoppingCart = shoppingcartrepository.GetShoppingCart(),
                 ReturnUrl = returnUrl

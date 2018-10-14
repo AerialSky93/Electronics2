@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using System.Web;
-using System.Linq;
-using ElectronicsStore.Models;
 using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
+
 
 namespace ElectronicsStore.Models
 {
-
     public class ShoppingCartSession : ShoppingCartRepository
     {
-
         public static ShoppingCartRepository GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;

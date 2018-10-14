@@ -24,6 +24,5 @@ namespace ElectronicsStore.Repository
             return _context.Product.Find(productid);
             
         }
-
     }
 }
