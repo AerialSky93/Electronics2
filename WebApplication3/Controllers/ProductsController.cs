@@ -17,7 +17,6 @@ namespace ElectronicsStore.Controllers
         private IMemoryCache _memoryCache;
         public IMemoryContainer _MemoryContainer;
 
-
         public ProductsController(IProductRepository<Product> repo, IMemoryCache memoryCache, IMemoryContainer MemoryContainer)
         {
             _ProductRepository = repo;
