@@ -9,7 +9,7 @@ namespace ElectronicsStore.Infrastructure
     public class MemoryContainer : IMemoryContainer
     {
         private readonly ElectronicsContext _context;
-        IMemoryCache MemCache;
+        public IMemoryCache MemCache;
         private IProductCategoryRepository<ProductCategory> _productCategoryRepository;
 
         public MemoryContainer(ElectronicsContext context, IMemoryCache memCache)
