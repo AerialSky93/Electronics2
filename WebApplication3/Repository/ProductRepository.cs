@@ -24,5 +24,22 @@ namespace ElectronicsStore.Repository
             return _context.Product.Find(productid);
             
         }
+
+
+        public void Edit(int productid, ProductViewModel productViewModel)
+        {
+
+            Product product = _context.Product.Find(productid);
+
+            product.ProductName = productViewModel.ProductName;
+            product.ProductDescription = productViewModel.ProductDescription;
+            _context.SaveChangesAsync();
+        }
+
+        private bool ProductExists(int id)
+        {
+            return _context.Product.Any(e => e.ProductId == id);
+        }
+
     }
 }

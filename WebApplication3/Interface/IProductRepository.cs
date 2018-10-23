@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ElectronicsStore.Models;
+using System.Collections.Generic;
 
 namespace ElectronicsStore.Repository
 {
@@ -6,5 +7,6 @@ namespace ElectronicsStore.Repository
     {
         IEnumerable<T> GetAllProduct();
         T GetById(int productid);
+        void Edit(int productid, ProductViewModel productViewModel);
     }
 }

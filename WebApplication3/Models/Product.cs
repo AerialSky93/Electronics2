@@ -9,5 +9,19 @@
 
         public int? ProductCategoryId { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+
+            Product other = (Product)obj;
+            return ProductId == other.ProductId 
+                && ProductName.Equals(other.ProductName)
+                && ProductDescription.Equals(other.ProductDescription) ; // or anything else you want to compare
+        }
+
     }
 }

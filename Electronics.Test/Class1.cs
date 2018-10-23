@@ -12,43 +12,35 @@ namespace Electronics.Test
 
     public class TestClass
     {
+ 
+        ElectronicsContext _context = new ElectronicsContext(new DbContextOptionsBuilder<ElectronicsContext>()
+            .UseInMemoryDatabase(databaseName: "Products Test")
+            .Options);
 
-        //var ElectronicsContext = new Mock<ElectronicsContext>();
-
-
-    // private DbContextOptionsBuilder<ElectronicsContext> context = new DbContextOptionsBuilder<ElectronicsContext>();
-
-        [Test]
-        public void TestProducts()
+        [SetUp]
+        public void SetUp()
         {
-            var options = new DbContextOptionsBuilder<ElectronicsContext>()
-                .UseInMemoryDatabase(databaseName: "Products Test")
-                .Options;
 
-            using (var context = new ElectronicsContext(options))
-            {
-                //DbContextOptionsBuilder<ElectronicsContext> context = new DbContextOptionsBuilder<ElectronicsContext>()
+            _context.Product.Add(new Product { ProductId = 1, ProductName = "TV", ProductDescription = "TV testing", ImageLocation = "test", ProductCategoryId = 2 });
+             _context.SaveChanges();
+        }
 
-                context.Product.Add(new Product { ProductId = 1, ProductName = "TV", ProductDescription = "TV testing", ImageLocation = "test" , ProductCategoryId = 2});
-                context.SaveChanges();
-                ProductRepository productRepository = new ProductRepository(context);
-                var test = new Product
-                    {ProductId = 1, ProductName = "TV", ProductDescription = "TV testing", ImageLocation = "test", ProductCategoryId = 2};
-                Assert.AreEqual("TV", productRepository.GetById(1).ProductName);
-                //Assert.AreEqual(test,productRepository.GetById(1));
-                // Assert.AreEqual(Object.Equals(test, productRepository.GetById(1)), 1);
-
-            }
+        [TearDown]
+        public void TearDown()
+        {
+            _context.Dispose();
         }
 
         [Test]
-        public void TestResults()
+        public void RunTest()
         {
+            ProductRepository productRepository = new ProductRepository(_context);
+            Assert.AreEqual("TV", productRepository.GetById(1).ProductName);
+            var test = new Product
+            { ProductId = 1, ProductName = "TV", ProductDescription = "TV testing", ImageLocation = "test" };
 
-            Assert.AreEqual(1,1);
+
+            Assert.AreEqual(true,test.Equals(productRepository.GetById(1)));
         }
-
     }
-
-
 }

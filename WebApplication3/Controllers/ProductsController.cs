@@ -53,5 +53,48 @@ namespace ElectronicsStore.Controllers
             return View(product);
         }
 
+
+        // GET: Products1/Edit/5
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = _ProductRepository.GetById(id);
+
+            ProductViewModel productViewModel = new ProductViewModel();
+
+            productViewModel.ProductName = product.ProductName;
+            productViewModel.ProductDescription = product.ProductDescription;
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(productViewModel);
+        }
+
+
+        // POST: Products1/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Product product, ProductViewModel productViewModel)
+        {
+            //if (id != product.ProductId)
+            //{
+            //    return NotFound();
+            //}
+
+            if (ModelState.IsValid)
+            {
+                _ProductRepository.Edit(id, productViewModel);
+            }
+            return RedirectToAction("Index", "Products");
+        }
+
+
     }
 }
