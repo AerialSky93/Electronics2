@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ElectronicsStore.Models;
+using AutoMapper;
 
 namespace ElectronicsStore.Repository
 {
@@ -29,7 +30,18 @@ namespace ElectronicsStore.Repository
         public void Edit(int productid, ProductViewModel productViewModel)
         {
 
+            var config = new MapperConfiguration(cfg => {cfg.CreateMap<Product, ProductViewModel>();});
+
+
             Product product = _context.Product.Find(productid);
+
+            IMapper iMapper = config.CreateMapper();
+
+            var source = _context.Product.Find(productid); //new Product();
+
+            var destination = iMapper.Map<Product, ProductViewModel>(source);
+
+
 
             product.ProductName = productViewModel.ProductName;
             product.ProductDescription = productViewModel.ProductDescription;

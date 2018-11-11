@@ -10,7 +10,8 @@ using AutoFixture;
 namespace Electronics.Test
 {
 
-    public class TestClass
+    public class 
+        TestClass
     {
  
         ElectronicsContext _context = new ElectronicsContext(new DbContextOptionsBuilder<ElectronicsContext>()

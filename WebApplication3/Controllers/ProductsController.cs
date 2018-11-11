@@ -6,6 +6,7 @@ using X.PagedList;
 using ElectronicsStore.Repository;
 using ElectronicsStore.Infrastructure;
 using Microsoft.Extensions.Caching.Memory;
+using AutoMapper;
 
 namespace ElectronicsStore.Controllers
 {
@@ -16,13 +17,15 @@ namespace ElectronicsStore.Controllers
         private IProductRepository<Product> _ProductRepository;
         private IMemoryCache _memoryCache;
         public IMemoryContainer _MemoryContainer;
+        private readonly IMapper _mapper;
 
-        public ProductsController(IProductRepository<Product> repo, IMemoryCache memoryCache, IMemoryContainer MemoryContainer)
+        public ProductsController(IProductRepository<Product> repo, IMemoryCache memoryCache, IMemoryContainer MemoryContainer, IMapper mapper)
         {
             _ProductRepository = repo;
             _memoryCache = memoryCache;
             _MemoryContainer = MemoryContainer;
             _MemoryContainer.MemoryItemsExecute();
+            _mapper = mapper;
         }
 
         // GET: Products
@@ -62,12 +65,13 @@ namespace ElectronicsStore.Controllers
                 return NotFound();
             }
 
-            var product = _ProductRepository.GetById(id);
+            Product product = _ProductRepository.GetById(id);
 
             ProductViewModel productViewModel = new ProductViewModel();
 
-            productViewModel.ProductName = product.ProductName;
-            productViewModel.ProductDescription = product.ProductDescription;
+            productViewModel = _mapper.Map<ProductViewModel>(product);
+
+
             if (product == null)
             {
                 return NotFound();

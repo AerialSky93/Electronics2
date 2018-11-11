@@ -8,6 +8,7 @@ using ElectronicsStore.Repository;
 using Microsoft.AspNetCore.Http;
 using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
 namespace ElectronicsStore
 {
@@ -33,6 +34,7 @@ namespace ElectronicsStore
             services.AddScoped<ShoppingCartRepository>(sp => ShoppingCartSession.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
             services.AddSession();

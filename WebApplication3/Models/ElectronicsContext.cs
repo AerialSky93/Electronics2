@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SportsStore.Models;
 
 namespace ElectronicsStore.Models
 {
@@ -96,5 +97,7 @@ namespace ElectronicsStore.Models
         }
 
         public DbSet<ElectronicsStore.Models.Customer> Customer_1 { get; set; }
+
+        public DbSet<SportsStore.Models.Order> Order { get; set; }
     }
 }
