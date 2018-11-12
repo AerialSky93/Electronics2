@@ -10,8 +10,7 @@ using AutoFixture;
 namespace Electronics.Test
 {
 
-    public class 
-        TestClass
+    public class ProductRepositoryTest
     {
  
         ElectronicsContext _context = new ElectronicsContext(new DbContextOptionsBuilder<ElectronicsContext>()
@@ -33,7 +32,7 @@ namespace Electronics.Test
         }
 
         [Test]
-        public void RunTest()
+        public void GetById_Data_Find()
         {
             ProductRepository productRepository = new ProductRepository(_context);
             Assert.AreEqual("TV", productRepository.GetById(1).ProductName);

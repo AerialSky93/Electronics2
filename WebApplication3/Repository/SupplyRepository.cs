@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ElectronicsStore.Models;
+using ElectronicsStore.Service;
+using Microsoft.Extensions.Logging;
 //using ElectronicsStore.Service;
 
 namespace ElectronicsStore.Repository
@@ -10,7 +12,9 @@ namespace ElectronicsStore.Repository
         private readonly ElectronicsContext _context;
         public ProductRepository productrepository;
         public VendorRepository vendorrepository;
+        ILogger logger;
 
+        //ParseVendorSupply parseVendorSupplytest = new ParseVendorSupply(logger);
 
         public SupplyRepository(ElectronicsContext context)
         {
@@ -52,6 +56,7 @@ namespace ElectronicsStore.Repository
 
         public Product GetById(int SupplyId)
         {
+
             return _context.Product.Find(SupplyId);
 
         }

@@ -9,15 +9,19 @@ using Microsoft.AspNetCore.Http;
 using ElectronicsStore.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 
 namespace ElectronicsStore
 {
     public class Startup
     {
 
-        public Startup(IConfiguration configuration)
+        private readonly ILogger _logger;
+
+        public Startup(IConfiguration configuration, ILogger<Startup> logger)
         {
             Configuration = configuration;
+            _logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -40,6 +44,9 @@ namespace ElectronicsStore
             services.AddSession();
 
             services.AddSingleton<IMemoryContainer,MemoryContainer>();
+            services.AddSingleton(new LoggerFactory().AddConsole().AddDebug());
+            services.AddLogging();
+            _logger.LogInformation("configure services log");
 
         }
 
@@ -48,6 +55,7 @@ namespace ElectronicsStore
         {
             if (env.IsDevelopment())
             {
+                _logger.LogInformation("developer environment");
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
