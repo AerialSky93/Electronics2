@@ -2,9 +2,10 @@
 {
     public partial class VendorSupply
     {
-        public int VendorId;
-        public int ProductId;
-        public int Quantity;
+        public int VendorSupplyId { get; set; }
+        public int VendorId { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
 
         //public static VendorSupply FromCsv(string csvLine)
         //{

@@ -30,7 +30,7 @@ namespace Electronics.Test
         }
 
         [Test]
-        public void FromCsv_ParseCorrectly()
+        public void FromCsv_CorrectLine_ParseCorrectly()
         {
             var logger = new Mock<ILogger>();
             var parseVendorSupply = new ParseVendorSupply(logger.Object);
@@ -42,7 +42,7 @@ namespace Electronics.Test
         }
 
         [Test]
-        public void FromCsv_ParseCorrectly_Extradata()
+        public void FromCsv_IncorrectLineExtradata_ExceptionThrown()
         {
             var logger = new Mock<ILogger>();
             var parseVendorSupply = new ParseVendorSupply(logger.Object);

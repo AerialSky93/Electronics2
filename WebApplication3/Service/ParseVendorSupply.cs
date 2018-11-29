@@ -13,6 +13,7 @@ namespace ElectronicsStore.Service
             _logger = logger;
         }
 
+        //Split individual line in commas
         public VendorSupply FromCsv(string csvLine)
         {
             VendorSupply vendorsupply = new VendorSupply();

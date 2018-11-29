@@ -19,7 +19,7 @@ namespace ElectronicsStore.Models
         public virtual DbSet<Vendor> Vendor { get; set; }
         public virtual DbSet<Supply> Supply { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
-
+        public virtual DbSet<VendorSupply> VendorSupply { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -94,6 +94,12 @@ namespace ElectronicsStore.Models
 
 
             });
+
+            modelBuilder.Entity<VendorSupply>(entity =>
+            {
+
+            });
+
         }
 
         public DbSet<ElectronicsStore.Models.Customer> Customer_1 { get; set; }

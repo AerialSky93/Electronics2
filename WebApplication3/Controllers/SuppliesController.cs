@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ElectronicsStore.Models;
 using ElectronicsStore.Repository;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Collections.Generic;
+using ElectronicsStore.Service;
 
 namespace ElectronicsStore.Controllers
 {
@@ -27,37 +31,42 @@ namespace ElectronicsStore.Controllers
             return View();
         }
 
-        //[HttpPost("UploadFiles")]
-        //public async Task<IActionResult> Post(List<IFormFile> files)
-        //{
-        //    long size = files.Sum(f => f.Length);
+        [HttpPost("UploadFiles")]
+        public async Task<IActionResult> Post( List<IFormFile> files)
+        {
+            long size = files.Sum(f => f.Length);
 
-        //    // full path to file in temp location
-        //    var filePath = Path.GetTempFileName();
+            // full path to file in temp location
+            var filePath = Path.GetTempFileName();
 
-        //    foreach (var formFile in files)
-        //    {
-        //        if (formFile.Length > 0)
-        //        {
-        //            using (var stream = new FileStream(filePath, FileMode.Create))
-        //            {
-        //                await formFile.CopyToAsync(stream);
-        //            }
-        //        }
-        //    }
+            foreach (var formFile in files)
+            {
+                if (formFile.Length > 0)
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await formFile.CopyToAsync(stream);
+                    }
+                }
+            }
+
+            ParseVendorSupplyFile parseVendorSupplyFile = new ParseVendorSupplyFile();
+            List < VendorSupply > vendorsupply = new List<VendorSupply>();
+
+            vendorsupply = parseVendorSupplyFile.ProcessFiles(filePath);
+
+            ParseVendorDatabase parseVendorDatabase = new ParseVendorDatabase(_context);
+            parseVendorDatabase.CopytoDatabase(vendorsupply);
+
+            // process uploaded files
+            // Don't rely on or trust the FileName property without validation.
+
+            return Ok(new { count = files.Count, size, filePath });
+        }
 
 
-            //    supplyrepository.ProcessFiles(filePath);
-
-            //    // process uploaded files
-            //    // Don't rely on or trust the FileName property without validation.
-
-            //    return Ok(new { count = files.Count, size, filePath });
-            //}
-
-
-            // GET: Supplies/Details/5
-            public async Task<IActionResult> Details(int? id)
+        // GET: Supplies/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {

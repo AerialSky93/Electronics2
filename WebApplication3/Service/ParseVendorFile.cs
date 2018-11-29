@@ -9,6 +9,7 @@ namespace ElectronicsStore.Service
 {
     public class ParseVendorSupplyFile
     {
+        // Takes files into list generic
         ILogger logger;
         public List<VendorSupply> ProcessFiles(string filePath)
         {
