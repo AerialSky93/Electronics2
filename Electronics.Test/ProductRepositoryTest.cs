@@ -12,7 +12,7 @@ namespace Electronics.Test
 
     public class ProductRepositoryTest
     {
- 
+ //
         ElectronicsContext _context = new ElectronicsContext(new DbContextOptionsBuilder<ElectronicsContext>()
             .UseInMemoryDatabase(databaseName: "Products Test")
             .Options);
