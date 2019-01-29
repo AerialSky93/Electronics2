@@ -11,7 +11,7 @@ namespace ElectronicsStore.Models
         private ShoppingCart shoppingCart = new ShoppingCart();
         //private List<CartLine> lineCollection = new List<CartLine>();
 
-        public ShoppingCart GetShoppingCart()
+        public ShoppingCart GetAll()
         {
             return shoppingCart;
         }

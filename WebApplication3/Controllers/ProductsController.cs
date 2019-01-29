@@ -33,7 +33,7 @@ namespace ElectronicsStore.Controllers
         {
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            var onePageOfProducts = _ProductRepository.GetAllProduct().ToPagedList(pageNumber, pageSize);
+            var onePageOfProducts = _ProductRepository.GetAll().ToPagedList(pageNumber, pageSize);
 
             ViewBag.OnePageOfProducts = onePageOfProducts;
             

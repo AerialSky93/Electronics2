@@ -21,7 +21,7 @@ namespace ElectronicsStore.Controllers
         {
             return View(new ShoppingCartViewModel
             {
-                ShoppingCart = _shoppingCartRepository.GetShoppingCart(),
+                ShoppingCart = _shoppingCartRepository.GetAll(),
                 ReturnUrl = returnUrl
             });
         }

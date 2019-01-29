@@ -5,7 +5,7 @@ namespace ElectronicsStore.Repository
 {
     public interface IOrderRepository
     {
-        Order GetOrder(int OrderID);
-        IEnumerable<Order> GetAllOrder();
+        IEnumerable<Order> GetAll();
+        Order GetById(int OrderID);
     }
 }

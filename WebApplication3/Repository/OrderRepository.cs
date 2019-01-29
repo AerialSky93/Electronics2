@@ -15,12 +15,12 @@ namespace ElectronicsStore.Repository
             _context = context;
         }
 
-        public IEnumerable<Order> GetAllOrder()
+        public IEnumerable<Order> GetAll()
         {
             return _context.Order.ToList();
         }
 
-        public Order GetOrder(int OrderID)
+        public Order GetById(int OrderID)
         {
             return _context.Order.Find(OrderID);
 

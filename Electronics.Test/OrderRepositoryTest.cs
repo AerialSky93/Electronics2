@@ -35,7 +35,7 @@ namespace Electronics.Test
         public void GetAllOrder_CorrectData_Display()
         {
 
-
+            ProductRepository productRepository = new ProductRepository(_context);
             OrderRepository orderRepository = new OrderRepository(_context);
             //_context.Order.Add(new Order { ProductId = 1, CustomerName = "John Smith", AddressLine1 = "Pine Street", ImageLocation = "test", ProductCategoryId = 2 });
             //_context.SaveChanges();
