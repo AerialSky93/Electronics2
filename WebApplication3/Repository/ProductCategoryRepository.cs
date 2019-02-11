@@ -13,7 +13,7 @@ namespace ElectronicsStore.Repository
             _context = context;
         }
 
-        public IEnumerable<ProductCategory> GetAllProductCategory()
+        public IEnumerable<ProductCategory> GetAll()
         {
             return _context.ProductCategory.ToList();
         }

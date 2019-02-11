@@ -21,14 +21,11 @@ namespace ElectronicsStore.Infrastructure
 
         public void MemoryItemsExecute()
         {
-            //System.NullReferenceException: 'Object reference not set to an instance of an object.'
-
             if (MemCache.Get<IEnumerable<ProductCategory>>("ProductCategoryList") == null)
             { 
-                var productCategory = _productCategoryRepository.GetAllProductCategory();
+                var productCategory = _productCategoryRepository.GetAll();
                 MemCache.Set("ProductCategoryList", productCategory);
             }
-
         }
     }
 }

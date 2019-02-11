@@ -1,5 +1,4 @@
-﻿
-using ElectronicsStore.Models;
+﻿using ElectronicsStore.Models;
 
 namespace ElectronicsStore.Repository
 {

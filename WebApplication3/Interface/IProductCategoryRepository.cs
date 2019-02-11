@@ -4,7 +4,7 @@ namespace ElectronicsStore.Repository
 {
     public interface IProductCategoryRepository<T> where T :class
     {
-        IEnumerable<T> GetAllProductCategory();
+        IEnumerable<T> GetAll();
         //T GetById(int productid);
     }
 }
