@@ -14,14 +14,12 @@ namespace ElectronicsStore.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Company sells electronics items and equipment.";
-
             return View();
         }
 
         public IActionResult Contact()
         {
             ViewData["Message"] = "Electronic Store Contact 555-555-5555.";
-
             return View();
         }
 

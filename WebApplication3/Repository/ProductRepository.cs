@@ -42,8 +42,6 @@ namespace ElectronicsStore.Repository
 
             var destination = iMapper.Map<Product, ProductViewModel>(source);
 
-
-
             product.ProductName = productViewModel.ProductName;
             product.ProductDescription = productViewModel.ProductDescription;
             _context.SaveChangesAsync();
