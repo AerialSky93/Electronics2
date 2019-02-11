@@ -1,5 +1,4 @@
-﻿namespace ElectronicsStore.Models
-{
+﻿{
     public partial class ProductViewModel
     {
         public int ProductId { get; set; }
