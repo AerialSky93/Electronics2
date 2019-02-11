@@ -13,7 +13,7 @@ namespace ElectronicsStore.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Company sells electronics items and equimpment.";
+            ViewData["Message"] = "Company sells electronics items and equipment.";
 
             return View();
         }
