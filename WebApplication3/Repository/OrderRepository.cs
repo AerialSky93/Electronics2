@@ -23,9 +23,7 @@ namespace ElectronicsStore.Repository
         public Order GetById(int OrderID)
         {
             return _context.Order.Find(OrderID);
-
         }
-   
-        
+ 
     }
 }
