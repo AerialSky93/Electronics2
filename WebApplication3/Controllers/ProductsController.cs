@@ -36,17 +36,14 @@ namespace ElectronicsStore.Controllers
             var onePageOfProducts = _ProductRepository.GetAll().ToPagedList(pageNumber, pageSize);
 
             ViewBag.OnePageOfProducts = onePageOfProducts;
-            
             ViewBag.ProductCategoryList = _memoryCache.Get<IEnumerable<ProductCategory>>("ProductCategoryList");
             
             return View();
-
         }
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int id)
         {
-
             var product = _ProductRepository.GetById(id);
             if (product == null)
             {
@@ -66,11 +63,8 @@ namespace ElectronicsStore.Controllers
             }
 
             Product product = _ProductRepository.GetById(id);
-
             ProductViewModel productViewModel = new ProductViewModel();
-
             productViewModel = _mapper.Map<ProductViewModel>(product);
-
 
             if (product == null)
             {
