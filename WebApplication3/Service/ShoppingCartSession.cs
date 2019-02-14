@@ -20,13 +20,11 @@ namespace ElectronicsStore.Models
         [JsonIgnore]
         public ISession Session { get; set; }
 
-
         public override void AddItem(Product product, int quantity)
         {
             base.AddItem(product, quantity);
             Session.SetJson("ShoppingCartRepository", this);
         }
-
 
         public override void RemoveItem(int cartlineid)
         {

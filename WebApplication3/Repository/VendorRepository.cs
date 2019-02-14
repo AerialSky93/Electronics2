@@ -2,7 +2,6 @@
 {
     public class VendorRepository 
     {
-
         private readonly ElectronicsContext _context;
 
         public VendorRepository(ElectronicsContext context)
@@ -15,7 +14,6 @@
             return _context.Vendor.Find(vendorId);
 
         }
-
 
     }
 }
