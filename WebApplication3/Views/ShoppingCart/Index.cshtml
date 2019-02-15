@@ -9,9 +9,6 @@
     <thead>
         <tr>
             <th>
-                Cart Line Id
-            </th>
-            <th>
                 Product Id
             </th>
             <th>
@@ -20,15 +17,15 @@
             <th>
                 Quantity
             </th>
+            <th>
+                Total Amount
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.ShoppingCart)
         {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CartLineId)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Product.ProductId)
             </td>
@@ -39,15 +36,18 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.TotalDollar)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Product.ProductId">Edit</a> |
-                
-                
-            <a asp-action="RemoveFromCart" method="post">
-                <input type="hidden" name="ProductID" asp-for="@item.Product.ProductId" />
-                <input type="hidden" name="returnUrl"
-                       value="@Model.ReturnUrl" />
+
+
+                <a asp-action="RemoveFromCart" method="post">
+                    <input type="hidden" name="ProductID" asp-for="@item.Product.ProductId" />
+                    <input type="hidden" name="returnUrl"
+                           value="@Model.ReturnUrl" />
                     Remove from Cart
-            </a>
+                </a>
 
             </td>
         </tr>

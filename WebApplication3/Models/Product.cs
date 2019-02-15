@@ -5,10 +5,20 @@
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
+        public float UnitPrice { get; set; }
         public string ImageLocation { get; set; }
+
 
         public int? ProductCategoryId { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
+
+
+
+        public float getUnitPrice()
+        {
+            return UnitPrice;
+        }
+
 
         public override bool Equals(object obj)
         {
@@ -25,3 +35,5 @@
 
     }
 }
+
+
