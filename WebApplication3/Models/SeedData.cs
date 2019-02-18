@@ -67,6 +67,32 @@ namespace ElectronicsStore.Models
                 context.SaveChanges();
             }
 
+            if (!context.Customer.Any())
+            {
+                context.Customer.AddRange(
+                 new Customer
+                 {
+                     FirstName = "Joe",
+                     LastName = "Thomas",
+                     AddressLine = "123 Maple Street",
+                     City = "Atlanta",
+                     StateCode = "GA",
+                     ZipCode = "55555"
+                 },
+                 new Customer
+                 {
+                     FirstName = "Sally",
+                     LastName = "Smith.",
+                     AddressLine = "452 Oak Street",
+                     City = "New York",
+                     StateCode = "NY",
+                     ZipCode = "55555"
+                 });
+                context.SaveChanges();
+            }
+
+
+
             if (!context.Vendor.Any())
             {
                 context.Vendor.AddRange(

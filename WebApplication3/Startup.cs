@@ -34,6 +34,7 @@ namespace ElectronicsStore
             services.AddDbContext<ElectronicsContext>(options => options.UseSqlServer(connection));
             services.AddTransient<IProductRepository<Product>, ProductRepository>();
             services.AddTransient<IProductCategoryRepository<ProductCategory>, ProductCategoryRepository>();
+            services.AddTransient<ICustomerRepository<Customer>, CustomerRepository>();
             services.AddTransient<ISupplyRepository<Supply>, SupplyRepository>();
             services.AddScoped<ShoppingCartRepository>(sp => ShoppingCartSession.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

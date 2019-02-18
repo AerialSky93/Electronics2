@@ -12,6 +12,7 @@ namespace ElectronicsStore.Repository
         public AutoMapperProfile()
         {
             CreateMap<Product, ProductViewModel>().ReverseMap();
+            CreateMap<Customer, CustomerViewModel>().ReverseMap();
         }
     }
 }
