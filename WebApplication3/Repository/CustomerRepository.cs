@@ -2,6 +2,7 @@
 using System.Linq;
 using ElectronicsStore.Models;
 using AutoMapper;
+using System.Data.Entity.Infrastructure;
 
 namespace ElectronicsStore.Repository
 {
@@ -33,7 +34,13 @@ namespace ElectronicsStore.Repository
             source.FirstName = customerViewModel.FirstName;
             source.LastName = customerViewModel.LastName;
             _context.Customer.Add(source);
-            _context.SaveChangesAsync();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+            }
 
         }
 

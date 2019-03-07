@@ -33,7 +33,6 @@ namespace ElectronicsStore.Repository
 
         public void Edit(int productid, ProductViewModel productViewModel)
         {
-
             var config = new MapperConfiguration(cfg => {cfg.CreateMap<Product, ProductViewModel>();});
             Product product = _context.Product.Find(productid);
             IMapper iMapper = config.CreateMapper();
