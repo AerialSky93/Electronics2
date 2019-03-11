@@ -6,19 +6,27 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDescription)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductDescription)
-        </dd>
+    <img class="img" src="~/images/@(Model.ImageLocation)" height="30%" width="30%"/>
+
+<dd>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+
+
+</dd>
+<dt>
+    @Html.DisplayNameFor(model => model.ProductDescription)
+</dt>
+<dd>
+    @Html.DisplayFor(model => model.ProductDescription)
+</dd>
     </dl>
 </div>
 <div>
+
     <a asp-action="Index">Back to List</a> |
 
     <form id="@Model.ProductId" asp-action="AddToCart"
@@ -33,5 +41,5 @@
             </button>
         </span>
     </form>
-        @*@Html.ActionLink(linkText: "AddtoCart", controllerName: "ShoppingCart", actionName: "AddtoCart", routeValues: new { productid = @Model.ProductId }))*@
+    @*@Html.ActionLink(linkText: "AddtoCart", controllerName: "ShoppingCart", actionName: "AddtoCart", routeValues: new { productid = @Model.ProductId }))*@
 </div>
