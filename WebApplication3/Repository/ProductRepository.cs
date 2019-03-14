@@ -13,6 +13,7 @@ namespace ElectronicsStore.Repository
             _context = context;
         }
 
+        // to get all, use ToList
         public IEnumerable<Product> GetAll()
         {
             return _context.Product.ToList();
@@ -41,6 +42,8 @@ namespace ElectronicsStore.Repository
 
             var destination = iMapper.Map<Product, ProductViewModel>(source);
 
+            //map the ViewModel to the model, use equality
+            //save changes
             product.ProductName = productViewModel.ProductName;
             product.ProductDescription = productViewModel.ProductDescription;
             _context.SaveChangesAsync();

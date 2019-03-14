@@ -24,23 +24,22 @@ namespace ElectronicsStore.Controllers
             return View(_CustomerRepository.GetAll());
         }
 
-        //// GET: Customers/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // GET: Customers/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var customer = await _context.Customer_1
-        //        .FirstOrDefaultAsync(m => m.CustomerId == id);
-        //    if (customer == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var customer = _CustomerRepository.GetById(1);
+            if (customer == null)
+            {
+                return NotFound();
+            }
 
-        //    return View(customer);
-        //}
+            return View(customer);
+        }
 
         // GET: Customers/Create
         public IActionResult Create()

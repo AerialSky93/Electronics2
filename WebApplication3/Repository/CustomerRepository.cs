@@ -14,6 +14,8 @@ namespace ElectronicsStore.Repository
             _context = context;
         }
 
+
+        // to get all, use ToList.
         public IEnumerable<Customer> GetAll()
         {
             return _context.Customer.ToList();
@@ -30,7 +32,8 @@ namespace ElectronicsStore.Repository
             var source = new Customer();
 
             var destination = iMapper.Map<Customer, CustomerViewModel>(source);
-
+            
+            //map the ViewModel to the model, use equality
             source.FirstName = customerViewModel.FirstName;
             source.LastName = customerViewModel.LastName;
             _context.Customer.Add(source);
