@@ -41,7 +41,8 @@ namespace ElectronicsStore.Models
                      ProductName = "Samsung T3 Portable SSD - 500GB",
                      ProductDescription = "Superfast Read-Write Speeds of up to 450 MB/s; Shock Resistant & Secure Encryption",
                      UnitPrice = 5.50F,
-                     ImageLocation = "Product1.jpg"
+                     ImageLocation = "Product1.jpg",
+                     ProductCategoryId = 1
                  },
                  new Product
                  {
@@ -55,7 +56,8 @@ namespace ElectronicsStore.Models
                      ProductName = "Panasonic On-Ear Stereo Headphones RP-HT21 ",
                      ProductDescription = "Lightweight, open-air design on-ear headphones weigh just 1.2 oz. (without cable). Connectivity Technology: Wired;30mm large neodymium drivers deliver rich powerful bass and natural treble.",
                      UnitPrice = 9.80F,
-                     ImageLocation = "Product3.jpg"
+                     ImageLocation = "Product3.jpg",
+                     ProductCategoryId = 3
                  },
                 new Product
                 {

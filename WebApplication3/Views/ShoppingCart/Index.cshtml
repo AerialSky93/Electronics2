@@ -5,7 +5,7 @@
 
 <h2>Shopping Cart</h2>
 
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -25,32 +25,84 @@
     <tbody>
         @foreach (var item in Model.ShoppingCart)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalDollar)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Product.ProductId">Edit</a> |
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalDollar)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Product.ProductId">Edit</a> |
 
 
-                <a asp-action="RemoveFromCart" method="post">
-                    <input type="hidden" name="ProductID" asp-for="@item.Product.ProductId" />
-                    <input type="hidden" name="returnUrl"
-                           value="@Model.ReturnUrl" />
-                    Remove from Cart
-                </a>
+                    <a asp-action="RemoveFromCart" method="post">
+                        <input type="hidden" name="ProductID" asp-for="@item.Product.ProductId" />
+                        <input type="hidden" name="returnUrl"
+                               value="@Model.ReturnUrl" />
+                        Remove from Cart
+                    </a>
 
-            </td>
-        </tr>
+                </td>
+            </tr>
         }
     </tbody>
-</table>
+</table>*@
+
+
+
+
+
+@*@model ElectronicsStore.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}*@
+
+<h2>Edit</h2>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @foreach (var item in Model.ShoppingCart)
+        {
+            <form asp-action="Edit" class="row">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="@item.CartLineId" />
+                <div class="form-group col-md-4">
+                    <label asp-for="@item.Product.ProductName" class="control-label"></label>
+                    <input asp-for="@item.Product.ProductName" class="form-control" />
+                    <span asp-validation-for="@item.Product.ProductName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="@item.Quantity" class="control-label"></label>
+                    <input asp-for="@item.Quantity" class="form-control" />
+                    <span asp-validation-for="@item.Quantity" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                    <label asp-for="ImageLocation" class="control-label"></label>
+                    <input asp-for="ImageLocation" class="form-control" />
+                    <span asp-validation-for="ImageLocation" class="text-danger"></span>
+                </div>*@
+                <div class="form-group col-md-4">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </form>
+        }
+        </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

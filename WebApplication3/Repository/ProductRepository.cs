@@ -19,6 +19,14 @@ namespace ElectronicsStore.Repository
             return _context.Product.ToList();
         }
 
+        // to get all, use ToList
+        public IEnumerable<Product> GetAllByProductCategory(int productcategoryid)
+        {
+
+            return _context.Product.Where(p => p.ProductCategoryId == productcategoryid);
+        }
+
+
         public IQueryable<Product> Products => _context.Product;
 
         public Product GetById(int productid)

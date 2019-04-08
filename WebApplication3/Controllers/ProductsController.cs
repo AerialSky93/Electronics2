@@ -41,6 +41,23 @@ namespace ElectronicsStore.Controllers
             return View();
         }
 
+
+        // GET: Products
+        public async Task<IActionResult> ProductCategoryIndex(int? page, int productcategoryid)
+        {
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            var onePageOfProducts = _ProductRepository.GetAllByProductCategory(productcategoryid).ToPagedList(pageNumber, pageSize);
+
+
+            ViewBag.OnePageOfProducts = onePageOfProducts;
+            ViewBag.ProductCategoryList = _memoryCache.Get<IEnumerable<ProductCategory>>("ProductCategoryList");
+
+            return View();
+        }
+
+
+
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int id)
         {
