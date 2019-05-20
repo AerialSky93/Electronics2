@@ -4,8 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicsStore", "WebApplication3\ElectronicsStore.csproj", "{DD744F7A-4059-4477-BFA9-488E26343FF7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4B08A1B0-23F2-4E49-869D-1A38094E373D} = {4B08A1B0-23F2-4E49-869D-1A38094E373D}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electronics.Test", "Electronics.Test\Electronics.Test.csproj", "{BEE2CF1B-2B43-4F64-B368-DBF955A02EF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Electronics.Test", "Electronics.Test\Electronics.Test.csproj", "{BEE2CF1B-2B43-4F64-B368-DBF955A02EF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electronics.Models", "Electronics.Models\Electronics.Models.csproj", "{4B08A1B0-23F2-4E49-869D-1A38094E373D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{BEE2CF1B-2B43-4F64-B368-DBF955A02EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEE2CF1B-2B43-4F64-B368-DBF955A02EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEE2CF1B-2B43-4F64-B368-DBF955A02EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B08A1B0-23F2-4E49-869D-1A38094E373D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B08A1B0-23F2-4E49-869D-1A38094E373D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B08A1B0-23F2-4E49-869D-1A38094E373D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B08A1B0-23F2-4E49-869D-1A38094E373D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

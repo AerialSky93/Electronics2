@@ -19,8 +19,6 @@ namespace ElectronicsStore.Repository
             return _context.ProductCategory.ToList();
         }
 
-
-
         public IQueryable<ProductCategory> ProductCategory => _context.ProductCategory;
     }
 }

@@ -40,9 +40,15 @@ namespace ElectronicsStore
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddAutoMapper();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/products/index", "");
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddMemoryCache();
             services.AddSession();
+
+
 
             services.AddSingleton<IMemoryContainer,MemoryContainer>();
             services.AddSingleton(new LoggerFactory().AddConsole().AddDebug());

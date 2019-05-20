@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SportsStore.Models;
+using ElectronicsStore.Models;
 
 namespace ElectronicsStore.Models
 {
