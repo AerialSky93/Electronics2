@@ -40,6 +40,7 @@ namespace ElectronicsStore
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddAutoMapper();
+            services.AddCors();
             services.AddMvc().AddRazorPagesOptions(options =>
             {
                 options.Conventions.AddPageRoute("/products/index", "");
@@ -71,8 +72,15 @@ namespace ElectronicsStore
                 app.UseExceptionHandler("/Home/Error");
             }
 
+
+
             app.UseStaticFiles();
             app.UseAuthentication();
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
             app.UseMvc();
             app.UseSession();
 

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ElectronicsStore.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace ElectronicsStore.Controllers
 {
@@ -15,11 +16,13 @@ namespace ElectronicsStore.Controllers
             _context = context;
         }
 
+
         // GET: Products1
         public async Task<IActionResult> Index()
         {
             return View(await _context.Product.ToListAsync());
         }
+
 
         // GET: Products1/Details/5
         public async Task<IActionResult> Details(int? id)
